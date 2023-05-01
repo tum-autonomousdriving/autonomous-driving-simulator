@@ -76,19 +76,16 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 
 ### Programmers
 * **[Zhou Liguo](https://www.ce.cit.tum.de/air/people/liguo-zhou/)**, *M.Sc.* - Project Coordinator
-* **Dipl.-Ing. Cao Wei**, *M.Sc.*
+* **Gao Yichao**
 * **Liu Hongshen**
 * **Ma Liang**
 * **[Liu Hao](linkedin.com/in/hao-liu97)**
 * **Song Yinglei**
-* **Li Haichuan**
-* **Cui Chuanlu**
 * **Liu Yang**
-* **Gao Yichao**
 
 ### Artist
 * **Liu Lian**
 
-### External Members
-* Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun
+### Former Members
+* Dipl.-Ing. Cao Wei, *M.Sc.*; Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun; Cui Chuanlu; Li Haichuan
 * Zhang Chao, *M.Sc.*; Lin Tianhao, *M.Sc.*; Wang Ruining; Huo Yifan; Ren Peng; Zhang Yujie
