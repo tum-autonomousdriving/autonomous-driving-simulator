@@ -10,7 +10,7 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 - [Members](#members)
 
 ## Framework
-![image](https://github.com/tum-autonomousdriving/.github/blob/main/images/framework.png)
+![image](images/framework.png)
 
 ## Functions
 * ### High-definition digital twins of real cities and roads
