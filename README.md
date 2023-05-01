@@ -82,6 +82,7 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 * **[Liu Hao](linkedin.com/in/hao-liu97)**
 * **Song Yinglei**
 * **Liu Yang**
+* **Yu Zhou**
 
 ### Artist
 * **Liu Lian**
