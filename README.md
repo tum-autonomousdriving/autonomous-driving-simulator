@@ -1,7 +1,7 @@
 English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/profile/README_zh.md)
 # Autonomous Driving Simulator
 
-<p align="center"> <img alt="GitHub release" src="https://github.com/tum-autonomousdriving/.github/blob/main/images/logo.png", width = "400"></p>
+<p align="center"> <img alt="GitHub release" src="https://github.com/tum-autonomousdriving/.github/blob/main/images/logo_s.png", width = "400"></p>
 
 ## Contents
 
