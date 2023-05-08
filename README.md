@@ -1,7 +1,7 @@
 English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/profile/README_zh.md)
 # Autonomous Driving Simulator
 
-<p align="center"> <img alt="GitHub release" src="images/logo_f.png", width = "400"></p>
+<p align="center"> <img alt="Logo" src="images/logo_f.png", width = "400"></p>
 
 ## Contents
 
@@ -18,10 +18,10 @@ Simulate complex and changeable real road scenarios to improve the ability of au
 <table>
   <tr>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/urban.png" alt="Pin popup window">
+      <img src="images/urban.png" alt="Pin popup window">
     </td>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/urban2.png" alt="Popup window">
+      <img src="images/urban2.png" alt="Popup window">
     </td>
   </tr>
 </table>
@@ -31,10 +31,10 @@ Simulate changes in light and weather to improve the robustness of autonomous dr
 <table>
   <tr>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/light.png" alt="Pin popup window", width ="600">
+      <img src="images/light.png" alt="Pin popup window", width ="600">
     </td>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/weather.png" alt="Popup window", width ="600">
+      <img src="images/weather.png" alt="Popup window", width ="600">
     </td>
   </tr>
 </table>
@@ -44,10 +44,10 @@ The automatic data annotation function can automatically generate labels for tra
 <table>
   <tr>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/lable.png" alt="Pin popup window">
+      <img src="images/lable.png" alt="Pin popup window">
     </td>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/segmentation.png" alt="Popup window">
+      <img src="images/segmentation.png" alt="Popup window">
     </td>
   </tr>
 </table>
@@ -57,10 +57,10 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 <table>
   <tr>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/sim1.png" alt="Pin popup window", width ="600">
+      <img src="images/sim1.png" alt="Pin popup window", width ="600">
     </td>
     <td vlign="center">
-      <img src="https://github.com/tum-autonomousdriving/.github/blob/main/images/Sim2.jpg" alt="Popup window", width ="600">
+      <img src="images/Sim2.jpg" alt="Popup window", width ="600">
     </td>
   </tr>
 </table>
@@ -72,7 +72,7 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 
 ### Supervisor
 
-* **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
+**[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
 
 ### Developers
 
