@@ -1,21 +1,32 @@
-import torch
-
+import time
 import socketio
 
-sio = socketio.Client()
+sioc = socketio.Client(logger=True, engineio_logger=True)
+start_timer = None
 
-@sio.event
+
+def send_ping():
+    global start_timer
+    start_timer = time.time()
+    sioc.emit('ping_from_client')
+
+
+@sioc.event
 def connect():
-    print('connection established')
+    print('connected to server')
+    send_ping()
 
-@sio.event
-def my_message(data):
-    print('message received with ', data)
-    sio.emit('my response', {'response': 'my response'})
 
-@sio.event
-def disconnect():
-    print('disconnected from server')
+@sioc.event
+def pong_from_server():
+    global start_timer
+    latency = time.time() - start_timer
+    print('latency is {0:.2f} ms'.format(latency * 1000))
+    sioc.sleep(1)
+    if sioc.connected:
+        send_ping()
 
-sio.connect('http://localhost:5000')
-sio.wait()
+
+if __name__ == '__main__':
+    sioc.connect('http://localhost:5000')
+    sioc.wait()
