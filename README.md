@@ -1,7 +1,7 @@
 English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/profile/README_zh.md)
 # Autonomous Driving Simulator
 
-<p align="center"> <img alt="GitHub release" src="https://github.com/tum-autonomousdriving/.github/blob/main/images/logo_f.png", width = "400"></p>
+<p align="center"> <img alt="GitHub release" src="images/logo_f.png", width = "400"></p>
 
 ## Contents
 
@@ -74,18 +74,31 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 
 * **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
 
-### Programmers
-* **[Zhou Liguo](https://www.ce.cit.tum.de/air/people/liguo-zhou/)**, *M.Sc.* - Project Coordinator
-* **Gao Yichao**
-* **Liu Hongshen**
-* **Ma Liang**
-* **[Liu Hao](linkedin.com/in/hao-liu97)**
-* **Song Yinglei**
-* **Liu Yang**
-* **Yu Zhou**
+### Developers
 
-### Artist
-* **Liu Lian**
+<table>
+    <tr>
+        <td><a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">周立国</a></td>
+        <td>Gao Yichao</td>
+        <td>Liu Hongshen</td>
+        <td>Ma Liang</td>
+        <td>Song Yinglei</td>
+    </tr>
+    <tr>
+        <td>Liu Lian</td>
+        <td>Yu Zhou</td>
+        <td>Liu Hao</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 <!--
 ### Former Members
