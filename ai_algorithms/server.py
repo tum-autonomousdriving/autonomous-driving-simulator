@@ -4,25 +4,20 @@ import cv2
 
 import numpy as np
 
-sio = socketio.Server()
+sios = socketio.Server()
 #app = socketio.WSGIApp(sio)
-app = socketio.Middleware(sio)
+app = socketio.Middleware(sios)
 
-#@sio.event
-#def ping_from_client(sid):
-#    sio.emit('pong_from_server', room=sid)
-#    print('已发送')
+vid = cv2.VideoCapture(0)
 
-
-
-@sio.event
-def ping_from_client(sid):
-    image = cv2.imread('99.jpg')
-
+@sios.event
+def send_frame(sid):
+    ret, image = vid.read()
     #success, encoded_image = cv2.imencode('.png', image)
-
-    sio.emit(event = 'pong_from_server', data = image.tobytes())
-    print('已发送Hello world')
+    cv2.imshow('server',image)
+    cv2.waitKey(1)
+    sios.emit(event = 'receive_frame', data = image.tobytes())
+    print('已发送')
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+    eventlet.wsgi.server(eventlet.listen(('localhost', 5000)), app)
