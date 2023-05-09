@@ -12,18 +12,21 @@ def send_ping():
     start_timer = time.time()
     sioc.emit('ping_from_client')
 
+def cv2_show(image):
+    cv2.imshow('1',image)
+    cv2.waitKey(1)
 
 @sioc.event
 def connect():
     print('connected to server')
     send_ping()
 
-
 @sioc.event
 def pong_from_server(data):
-    image = np.frombuffer(data, np.uint8).reshape((100,100,3))
-    cv2.imshow('1',image)
-    cv2.waitKey(1)
+    image = np.frombuffer(data, np.uint8).reshape((1920,1080,3))
+
+    cv2_show(image)
+
     global start_timer
     latency = time.time() - start_timer
     print('latency is {0:.2f} ms'.format(latency * 1000))

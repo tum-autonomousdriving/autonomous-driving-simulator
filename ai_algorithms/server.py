@@ -17,9 +17,9 @@ app = socketio.Middleware(sio)
 
 @sio.event
 def ping_from_client(sid):
-    image = np.zeros((100,100,3), np.uint8)
+    image = cv2.imread('99.jpg')
 
-    success, encoded_image = cv2.imencode('.png', image)
+    #success, encoded_image = cv2.imencode('.png', image)
 
     sio.emit(event = 'pong_from_server', data = image.tobytes())
     print('已发送Hello world')
