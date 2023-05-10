@@ -2,10 +2,10 @@ import time
 import socketio
 import cv2
 import numpy as np
-from torchvision import models
-from torchvision import transforms
+#from torchvision import models
+#from torchvision import transforms
 
-transf = transforms.ToTensor()
+#transf = transforms.ToTensor()
 
 sioc = socketio.Client()
 
@@ -28,29 +28,10 @@ def receive_frame(data):
     #model = models.resnet50(pretrained=True)
     #output = model(image)
 
-    #sioc.sleep(1)
     if sioc.connected:
-        #cv2.imshow('client', image)
-        #cv2.waitKey(30)
-        #cv2.imwrite(str(time.time())+'.png', image)
         end = time.time()
         sioc.emit('send_frame')
         
-
-
-#vid = cv2.VideoCapture(0)
-
-'''
-@sioc.event
-def receive_frame():
-    print(222222222222)
-    ret, image = vid.read()
-    #success, encoded_image = cv2.imencode('.png', image)
-    cv2.imshow('client',image)
-    cv2.waitKey(1)
-    sioc.emit(event = 'send_frame', data = image.tobytes())
-    print('已发送')
-'''
 
 @sioc.event
 def disconnect():
