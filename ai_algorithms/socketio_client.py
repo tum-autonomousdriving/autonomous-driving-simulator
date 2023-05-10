@@ -23,7 +23,7 @@ def receive_frame(data):
         print((start-end)*1000,'ms')
     
     image = np.frombuffer(data, np.uint8)
-    image = cv2.imdecode('.png', image).reshape((4096,4096,3))
+    #image = cv2.imdecode(image, cv2.IMREAD_UNCHANGED).reshape((4096,4096,3))
     #image = transf(image).unsqueeze(0)
     #model = models.resnet50(pretrained=True)
     #output = model(image)
