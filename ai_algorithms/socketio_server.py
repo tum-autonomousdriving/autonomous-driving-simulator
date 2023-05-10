@@ -25,6 +25,11 @@ def send_frame(sid):
     print('已发送')
 
 @sios.event
+def cs_message(sid, data):
+    print(data)
+    sios.emit('hi', '你好, C#!')
+
+@sios.event
 def disconnect(sid):
     print('disconnect ', sid)
 
