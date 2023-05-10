@@ -14,19 +14,29 @@ def connect():
     print('connected to server')
     sioc.emit(event = 'send_frame')
 
+end = 0
 @sioc.event
 def receive_frame(data):
-    image = np.frombuffer(data, np.uint8).reshape((480,640,3))
-    image = transf(image).unsqueeze(0)
-    model = models.resnet50(pretrained=True)
-    output = model(image)
+    global end
+    start = time.time()
+    if end != 0:
+        print((start-end)*1000,'ms')
+    
+    image = np.frombuffer(data, np.uint8)
+    image = cv2.imdecode('.png', image).reshape((4096,4096,3))
+    #image = transf(image).unsqueeze(0)
+    #model = models.resnet50(pretrained=True)
+    #output = model(image)
 
     #sioc.sleep(1)
     if sioc.connected:
-        cv2.imshow('client', image)
-        cv2.waitKey(30)
+        #cv2.imshow('client', image)
+        #cv2.waitKey(30)
         #cv2.imwrite(str(time.time())+'.png', image)
+        end = time.time()
         sioc.emit('send_frame')
+        
+
 
 #vid = cv2.VideoCapture(0)
 
@@ -48,5 +58,4 @@ def disconnect():
 
 if __name__ == '__main__':
     sioc.connect('http://localhost:5000')
-    cv2.namedWindow('client')
     sioc.wait()
