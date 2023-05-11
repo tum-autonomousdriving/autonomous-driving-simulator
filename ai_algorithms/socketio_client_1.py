@@ -20,7 +20,7 @@ vid = cv2.VideoCapture(0)
 
 end = 0
 @sioc.event
-def receive_frame():#data):
+def receive_frame_1(data):
     global end
     start = time.time()
     if end != 0:
