@@ -7,22 +7,27 @@ import numpy as np
 
 #transf = transforms.ToTensor()
 
+from turbojpeg import TurboJPEG, TJPF_BGR 
+
 sioc = socketio.Client()
 
 @sioc.event
 def connect():
     print('connected to server')
-    sioc.emit(event = 'send_frame')
+    sioc.emit(event = 'send_frame', data='connect')
+
+vid = cv2.VideoCapture(0)
 
 end = 0
 @sioc.event
-def receive_frame(data):
+def receive_frame():#data):
     global end
     start = time.time()
     if end != 0:
         print((start-end)*1000,'ms')
     
-    image = np.frombuffer(data, np.uint8)
+    #image = np.frombuffer(data, np.uint8)
+    #image = TurboJPEG.decode(image)
     #image = cv2.imdecode(image, cv2.IMREAD_UNCHANGED).reshape((4096,4096,3))
     #image = transf(image).unsqueeze(0)
     #model = models.resnet50(pretrained=True)
@@ -30,7 +35,9 @@ def receive_frame(data):
 
     if sioc.connected:
         end = time.time()
-        sioc.emit('send_frame')
+        ret, image = vid.read()
+        image = cv2.resize(image, (2000, 2000))
+        sioc.emit('send_frame', data=image.tobytes())
         
 
 @sioc.event
