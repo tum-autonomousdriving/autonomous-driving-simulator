@@ -12,6 +12,7 @@ while True:
     bufsize = conn.getsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF)
 
     while True:
+        cv2.waitKey(100)
         data=conn.recv(640*4*480*4*3)
             
         image = np.frombuffer(data, np.uint8).reshape((480*4,640*4,3))
