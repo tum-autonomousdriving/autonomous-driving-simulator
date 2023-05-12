@@ -2,8 +2,13 @@ import socket
 import sys
 import cv2
 
-c=socket.socket()                                           # 创建socket对象
-c.connect(('localhost',4323))                                #建立连接
+                          
+socket_c=socket.socket()                                           # 创建socket对象
+socket_c.connect(('localhost',4323))                               #建立连接
+
+socket_c.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 1024*1024)
+bufsize = socket_c.getsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF)
+print(bufsize)
 
 vid = cv2.VideoCapture(0)
 
@@ -18,6 +23,6 @@ while True:
         #c.send(ab.encode('utf-8'))                               #发送数据
         #data=c.recv(1024)                                       #接收一个1024字节的数据
         #print('收到：',data.decode('utf-8'))
-    image = cv2.resize(image, (640*4, 480*4))
+    image = cv2.resize(image, (4096, 4096))
     print(len(image.tobytes()))
-    c.send(image.tobytes())
+    socket_c.send(image.tobytes())
