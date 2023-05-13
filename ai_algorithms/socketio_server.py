@@ -1,10 +1,10 @@
 import socketio
 import eventlet
 import cv2
-from turbojpeg import TurboJPEG, TJPF_BGR 
+#from turbojpeg import TurboJPEG, TJPF_BGR 
 import numpy as np
 
-sios = socketio.Server(max_http_buffer_size = 1000000000)
+sios = socketio.Server(max_http_buffer_size = 100000000)
 app = socketio.WSGIApp(socketio_app=sios)
 
 @sios.event
