@@ -1,7 +1,7 @@
 English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/profile/README_zh.md)
 # Autonomous Driving Simulator
 
-<p align="center"> <img alt="Logo" src="images/logo_f.png", width = "400"></p>
+<p align="center"> <img alt="Logo" src="figures/logo_f.png", width = "400"></p>
 
 ## Contents
 
@@ -11,7 +11,7 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 - [Developers](#developers)
 
 ## Framework
-![image](images/framework.png)
+![image](figures/framework.png)
 
 ## Instructions
 
@@ -24,10 +24,10 @@ Simulate complex and changeable real road scenarios to improve the ability of au
 <table>
   <tr>
     <td vlign="center">
-      <img src="images/urban.png" alt="Pin popup window">
+      <img src="figures/urban.png" alt="Pin popup window">
     </td>
     <td vlign="center">
-      <img src="images/urban2.png" alt="Popup window">
+      <img src="figures/urban2.png" alt="Popup window">
     </td>
   </tr>
 </table>
@@ -37,10 +37,10 @@ Simulate changes in light and weather to improve the robustness of autonomous dr
 <table>
   <tr>
     <td vlign="center">
-      <img src="images/light.png" alt="Pin popup window", width ="600">
+      <img src="figures/light.png" alt="Pin popup window", width ="600">
     </td>
     <td vlign="center">
-      <img src="images/weather.png" alt="Popup window", width ="600">
+      <img src="figures/weather.png" alt="Popup window", width ="600">
     </td>
   </tr>
 </table>
@@ -50,10 +50,10 @@ The automatic data annotation function can automatically generate labels for tra
 <table>
   <tr>
     <td vlign="center">
-      <img src="images/lable.png" alt="Pin popup window">
+      <img src="figures/lable.png" alt="Pin popup window">
     </td>
     <td vlign="center">
-      <img src="images/segmentation.png" alt="Popup window">
+      <img src="figures/segmentation.png" alt="Popup window">
     </td>
   </tr>
 </table>
@@ -63,10 +63,10 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 <table>
   <tr>
     <td vlign="center">
-      <img src="images/sim1.png" alt="Pin popup window", width ="600">
+      <img src="figures/sim1.png" alt="Pin popup window", width ="600">
     </td>
     <td vlign="center">
-      <img src="images/Sim2.jpg" alt="Popup window", width ="600">
+      <img src="figures/Sim2.jpg" alt="Popup window", width ="600">
     </td>
   </tr>
 </table>
