@@ -84,7 +84,7 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 
 <table>
     <tr>
-        <td><a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">周立国</a></td>
+        <td>周立国 <a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a></td>
         <td>Gao Yichao</td>
         <td>Yu Zhou</td>
         <td>Liu Hao</td>
