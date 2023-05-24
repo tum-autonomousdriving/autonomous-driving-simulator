@@ -1,3 +1,0 @@
-is_global = true
-build_property.RootNamespace = SocketIOClient
-build_property.ProjectDir = c:\pytorch\autonomous-driving-simulator\unity_cs\SocketIOClient\
