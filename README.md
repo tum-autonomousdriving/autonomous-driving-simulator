@@ -15,8 +15,8 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 
 ## Instructions
 
-1. Scenes Download Link
-https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+1. Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+
 
 ## Functions
 * ### High-definition digital twins of real cities and roads
