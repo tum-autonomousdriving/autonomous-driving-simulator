@@ -8,7 +8,7 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 - [Framework](#framework)
 - [Instructions](#instructions)
 - [Functions](#functions)
-- [Developers](#members)
+- [Developers](#developers)
 
 ## Framework
 ![image](images/framework.png)
