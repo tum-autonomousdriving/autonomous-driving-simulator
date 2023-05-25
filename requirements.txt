@@ -2,5 +2,6 @@ python-socketio
 python-socketio[client]
 eventlet
 
-pytorch
+torch
+torchvision
 numpy

@@ -1,3 +1,5 @@
 .vscode/
 Debug/
 __pycache__/
+
+*.pt

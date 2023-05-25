@@ -1,7 +1,8 @@
 import os
+import torch
 from torch.utils.data import Dataset
 
-class sim_dataset(Dataset):
+class simulator_dataset(Dataset):
     def __init__(self, data_path, phase='train'):
 
         file_paths = os.listdir(data_path)
@@ -15,7 +16,7 @@ class sim_dataset(Dataset):
         self
         
     def __len__(self):
-        return
+        return 100
 
     def __getitem__(self, idx):
-        return
+        return torch.rand(3,224,224), torch.rand(3)
