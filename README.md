@@ -15,7 +15,16 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 
 ## Instructions
 
-1. Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+### 1. File Structure
+```
+data: data
+data_processing: code for preprocessing data
+networks
+train
+drive.py
+```
+
+### 2. Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
 
 ## Functions
