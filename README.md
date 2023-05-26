@@ -18,7 +18,11 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 ### 1. File Association
 ![image](figures/structure.png)
 
-### 2. Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+### 2. Train
+
+### 3. Drive
+
+### 4. Simulator Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
 
 ## Functions
