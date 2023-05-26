@@ -60,7 +60,7 @@ def train_val(cfg):
                 output = model(input)
                 loss_sum = loss_sum + loss_function(output, target)
             print(val_i)
-            print('val_loss:', loss_sum/(val_i+1))
+            print('val_loss:', loss_sum.item()/(val_i+1))
 
         torch.save(model, cfg.save_path+'/'+str(epoch_i)+'.pt')
         torch.cuda.empty_cache()
