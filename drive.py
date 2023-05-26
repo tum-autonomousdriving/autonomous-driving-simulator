@@ -4,12 +4,12 @@ import eventlet
 import time
 import numpy as np
 import torch
-from flask import Flask
+#from flask import Flask
 
 sios = socketio.Server(max_http_buffer_size = 100000000)
-app = Flask(__name__)
-app = socketio.WSGIApp(sios, app)
-#app = socketio.Middleware(sios, app)
+#app = Flask(__name__)
+#app = socketio.WSGIApp(sios, app)
+app = socketio.WSGIApp(sios)
 
 model = torch.load('weights/resnet/0.pt', map_location=torch.device('cpu'))
 model.eval()
