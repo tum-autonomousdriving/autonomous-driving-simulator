@@ -13,11 +13,6 @@ def data2control(data):
     image = np.random.randint(256, size=(480, 640, 3)).astype('uint8')
     sioc.emit(event = 'ai_driver', data=image.tobytes())
     print('received')
-
-# Send image from client to server.
-@sioc.event
-def control(data):
-    print('controled')
         
 @sioc.event
 def disconnect():
