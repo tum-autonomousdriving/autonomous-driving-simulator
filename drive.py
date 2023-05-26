@@ -19,10 +19,10 @@ def connect(sid, environ, auth):
     print('connected ', sid)
     sios.emit(event = 'data2control', data=1)
 
-@sios.event
+@sios.on('ai_driver')
 def ai_driver(sid, data):
 
-    data = np.frombuffer(data, np.uint8).reshape((480,640,3)).astype(np.float32)/255
+    data = np.frombuffer(data, np.uint8).reshape((480,1920,3)).astype(np.float32)/255
     data = torch.from_numpy(data).permute(2,0,1).unsqueeze(0)
 
     # output 是三个在(-1,1)区间的浮点数

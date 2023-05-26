@@ -8,9 +8,10 @@ sioc = socketio.Client()
 def connect():
     print('connected to server')
 
-@sioc.event
+#@sioc.event
+@sioc.on('data2control')
 def data2control(data):
-    image = np.random.randint(256, size=(480, 640, 3)).astype('uint8')
+    image = np.random.randint(256, size=(480, 1920, 3)).astype('uint8')
     sioc.emit(event = 'ai_driver', data=image.tobytes())
     print('received')
         
