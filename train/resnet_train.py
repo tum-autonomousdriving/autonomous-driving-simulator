@@ -17,7 +17,7 @@ def train_val(cfg):
         os.environ['CUDA_VISIBLE_DEVICES'] = cfg.device
         device = torch.device('gpu:0')
 
-    # 第一步：构建数据读取迭代器
+    # 第1步：构建数据读取迭代器
 
     train_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'train'), phase='train')
     val_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'val'), phase='val')
@@ -25,20 +25,20 @@ def train_val(cfg):
     train_dataloader = DataLoader(train_data, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers)
     val_dataloader = DataLoader(val_data, batch_size=cfg.batch_size*2, shuffle=False, num_workers=cfg.num_workers)
 
-    # 第二步：构建网络，设置训练参数：学习率、学习率衰减策略、优化函数（SDG、Adam、……）、损失函数、……
+    # 第2步：构建网络，设置训练参数：学习率、学习率衰减策略、优化函数（SDG、Adam、……）、损失函数、……
 
-    model = create_model(pretrained=False).to(device=device)
+    model = create_model().to(device=device)
 
     optimizer = torch.optim.SGD(model.parameters(), lr=cfg.learning_rate)
 
     loss_function = torch.nn.MSELoss()
 
-    # 第三步：循环读取数据训练网络
+    # 第3步：循环读取数据训练网络
     
     for epoch_i in range(cfg.epochs):
         model.train()
 
-        for step_i, (input, target) in enumerate(train_dataloader):
+        for train_i, (input, target) in enumerate(train_dataloader):
             input, target = input.to(device), target.to(device)
 
             optimizer.zero_grad()
@@ -54,12 +54,15 @@ def train_val(cfg):
         # 训练完每个epoch进行验证
         model.eval()
         with torch.no_grad():
-            for input, target in val_dataloader:
+            loss_sum = 0
+            for val_i, (input, target) in enumerate(val_dataloader):
                 input, target = input.to(device), target.to(device)
                 output = model(input)
-                loss = loss_function(output, target)
+                loss_sum = loss_sum + loss_function(output, target)
+            print(val_i)
+            print('val_loss:', loss_sum/(val_i+1))
 
-        torch.save()
+        torch.save(model, cfg.save_path+'/'+str(epoch_i)+'.pt')
         torch.cuda.empty_cache()
 
 def parse_cfg():
@@ -70,6 +73,7 @@ def parse_cfg():
     parser.add_argument('--batch-size', type=int, default=2, help='batch size')
     parser.add_argument('--learning-rate', type=int, default=0.01, help='initial learning rate')
     parser.add_argument('--num-workers', type=int, default=0, help='number of workers')
+    parser.add_argument('--save-path', type=str, default='weights/resnet', help='path to save checkpoint')
 
     return parser.parse_args()
 
