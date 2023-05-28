@@ -15,8 +15,17 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 
 ## Instructions
 
-### 1. File Association
+### 1. Workflow
 ![image](figures/structure.png)
+
+```
+Step 1: Collect data from the Simulator
+Step 2: Design neural network class (torch.nn.Module)
+        Write data processing class (torch.utils.data.Dataset)
+Step 3: Train the model and save weights (torch.utils.data.DataLoader, optimizer, loss function, …)
+Step 4: Drive a car in the Simulator using the trained model
+
+```
 
 ### 2. Train
 

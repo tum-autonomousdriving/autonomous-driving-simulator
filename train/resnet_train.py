@@ -5,7 +5,7 @@ import os
 import argparse
 
 import torch
-from networks.resnet import create_model
+from networks.resnet import resnet_model
 from torch.utils.data import DataLoader
 from data_processing.simulator import simulator_dataset
 
@@ -27,7 +27,7 @@ def train_val(cfg):
 
     # 第2步：构建网络，设置训练参数：学习率、学习率衰减策略、优化函数（SDG、Adam、……）、损失函数、……
 
-    model = create_model().to(device=device)
+    model = resnet_model().to(device=device)
 
     optimizer = torch.optim.SGD(model.parameters(), lr=cfg.learning_rate)
 
