@@ -19,8 +19,8 @@ def train_val(cfg):
 
     # 第1步：构建数据读取迭代器
 
-    train_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'train'), phase='train')
-    val_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'val'), phase='val')
+    train_data = simulator_dataset(data_path = cfg.train_data)
+    val_data = simulator_dataset(data_path = cfg.val_data)
 
     train_dataloader = DataLoader(train_data, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers)
     val_dataloader = DataLoader(val_data, batch_size=cfg.batch_size*2, shuffle=False, num_workers=cfg.num_workers)
@@ -68,7 +68,8 @@ def train_val(cfg):
 def parse_cfg():
     parser = argparse.ArgumentParser()
     parser.add_argument('--epochs', type=int, default=100, help='total number of training epochs')
-    parser.add_argument('--data-path', type=str, default='data/simulator', help='data path')
+    parser.add_argument('--train-data', type=str, default='data/simulator/train/Dataset22/VehicleData.txt', help='data path')
+    parser.add_argument('--val-data', type=str, default='data/simulator/train/Dataset22/VehicleData.txt', help='data path')
     parser.add_argument('--device', type=str, default='cpu', help='e.g. cpu or 0 or 0,1,2,3')
     parser.add_argument('--batch-size', type=int, default=2, help='batch size')
     parser.add_argument('--learning-rate', type=int, default=0.01, help='initial learning rate')
