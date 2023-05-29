@@ -30,6 +30,10 @@ Step 4: Drive a car in the Simulator using the trained model
 
 ### 3. Drive
 
+```
+python drive.py
+```
+
 ### 4. Simulator Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
 
