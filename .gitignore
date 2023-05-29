@@ -1,5 +1,6 @@
 .vscode/
 Debug/
 __pycache__/
+Linux/
 
 *.pt
