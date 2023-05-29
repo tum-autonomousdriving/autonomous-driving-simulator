@@ -7,7 +7,6 @@ English | [中文](https://github.com/tum-autonomousdriving/.github/blob/main/pr
 
 - [Framework](#framework)
 - [Instructions](#instructions)
-- [Functions](#functions)
 - [Developers](#developers)
 
 ## Framework
@@ -34,6 +33,7 @@ Step 4: Drive a car in the Simulator using the trained model
 ### 4. Simulator Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
 
+<!--
 ## Functions
 * ### High-definition digital twins of real cities and roads
 Simulate complex and changeable real road scenarios to improve the ability of autonomous driving algorithms to deal with such scenarios.
@@ -86,7 +86,7 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
     </td>
   </tr>
 </table>
-
+-->
 
 ## Developers
 
