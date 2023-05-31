@@ -7,7 +7,7 @@ import argparse
 import torch
 from networks.customnet import customnet_model
 from torch.utils.data import DataLoader
-from data_processing.simulator import simulator_dataset
+from data_processing.customnet_data import simulator_dataset
 
 
 def train_val(cfg):
