@@ -5,9 +5,9 @@ import os
 import argparse
 
 import torch
-from networks.customnet import customnet_model
+from networks.customnet import CustomnetModel
 from torch.utils.data import DataLoader
-from data_processing.customnet_data import simulator_dataset
+from data_preparation.customnet_data import SimulatorDataset
 
 
 def train_val(cfg):
@@ -19,15 +19,15 @@ def train_val(cfg):
 
     # 第1步：构建数据读取迭代器
 
-    train_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'train'), phase='train')
-    val_data = simulator_dataset(data_path = os.path.join(cfg.data_path, 'val'), phase='val')
+    train_data = SimulatorDataset(data_path = os.path.join(cfg.data_path, 'train'), phase='train')
+    val_data = SimulatorDataset(data_path = os.path.join(cfg.data_path, 'val'), phase='val')
 
-    train_dataloader = DataLoader(train_data, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers)
-    val_dataloader = DataLoader(val_data, batch_size=cfg.batch_size*2, shuffle=False, num_workers=cfg.num_workers)
+    train_dataloader = DataLoader(train_data, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers, pin_memory=True)
+    val_dataloader = DataLoader(val_data, batch_size=cfg.batch_size*2, shuffle=False, num_workers=cfg.num_workers, pin_memory=True)
 
     # 第2步：构建网络，设置训练参数：学习率、学习率衰减策略、优化函数（SDG、Adam、……）、损失函数、……
 
-    model = customnet_model().to(device=device)
+    model = CustomnetModel().to(device=device)
 
     optimizer = torch.optim.SGD(model.parameters(), lr=cfg.learning_rate)
 

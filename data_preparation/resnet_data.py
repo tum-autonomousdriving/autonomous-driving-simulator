@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-class simulator_dataset(Dataset):
+class SimulatorDataset(Dataset):
     def __init__(self, data_path, phase='train'):
         self.folder_dir = os.path.dirname(data_path)
         f = open(data_path, 'r')
