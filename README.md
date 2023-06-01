@@ -111,8 +111,8 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
         <td>Song Yinglei</td>
     </tr>
     <tr>
+        <td>Liu Hongshen</td>
         <td>Liu Lian</td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
