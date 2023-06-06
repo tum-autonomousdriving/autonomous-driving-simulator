@@ -28,14 +28,77 @@ Step 4: Drive a car in the Simulator using the trained model
 
 ### 2. Train
 
+Please open the "Simulator_train" application on your operating system.
+
+Once opened, the Scene will initiate the recording of training data, which will be saved in the "Data/DatasetX/IMG" path and the "Data/DatasetX/VehicleData.txt" file.
+
+In this `VehicleData.txt` the data is: the path of IMG, throttle(range: 0 to 1), brakes(range: 0 to 1), sterring(range: -1 to 1).
+
+**Please note that you should not remove the "Index.txt" file from the "Data/" directory.**
+
 ### 3. Drive
 
+Please open the "Simulator_test" application on your operating system.
+
+and then run your: 
 ```
 python drive.py
 ```
+In this scene, 3 images are output to your net, and 3 elements of control are acepted.(throttle, brakes and steering)
 
-### 4. Simulator Scenes Download Link: https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+### 4. Simulator Functions
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Keyboard Defaults</th>
+        <th>Gamepad Defaults</th>
+    </tr>
+    <tr>
+        <td>Sterring</td>
+        <td>A/D</td>
+        <td>Left Stick - Left/Right</td>
+    </tr>
+    <tr>
+        <td>Throttle</td>
+        <td>W</td>
+        <td>Left Stick - Up, Right Trigger</td>
+    </tr>
+    <tr>
+        <td>Brakes</td>
+        <td>S</td>
+        <td>Left Stick - Down, Left Trigger</td>
+    </tr>
+    <tr>
+        <td>Reset the Position</td>
+        <td>F1</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Switch mouse control</td>
+        <td>Mouse right button</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Quit</td>
+        <td>ESC</td>
+        <td>-</td>
+    </tr>
+    <!--
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    -->
+</table>
 
+### 5. Simulator Scenes Download Link: 
+<!--
+https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+-->
+https://drive.google.com/drive/folders/1YPlSq4V3ArtOUVH11h-doQ2UqCsvQKtQ?usp=sharing
 
 <!--
 ## Functions
