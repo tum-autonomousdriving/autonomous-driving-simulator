@@ -10,14 +10,6 @@ class SimulatorDataset(Dataset):
         f = open(data_path, 'r')
         self.lines = f.readlines()
 
-        
-        if phase == 'train':
-            print(data_path)
-        if phase == 'val':
-            print(data_path)
-        if phase == 'test':
-            print('test')
-        
     def __len__(self):
         return len(self.lines)
 

@@ -6,3 +6,4 @@ eventlet
 torch
 torchvision
 numpy
+opencv
