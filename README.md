@@ -157,25 +157,35 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
 
 ## Developers
 
-<a href="https://www.ce.cit.tum.de/air/home/">Chair of Robotics, Artificial Intelligence and Real-time Systems, Technical University of Munich</a>
+### 1. Affiliation
 
-### Supervisor
+<a href="https://www.ce.cit.tum.de/air/home/">Chair of Robotics, Artificial Intelligence and Real-time Systems</a> · <a href="https://www.tum.de/">Technical University of Munich</a>
+
+### 2. Supervisor
 
 **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
 
-### Programmers
+
+### 3. Programmers
 
 <table>
     <tr>
-        <td>周立国 <a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a></td>
-        <td>Gao Yichao</td>
-        <td>Yu Zhou</td>
-        <td>Liu Hao</td>
-        <td>Song Yinglei</td>
+        <td><font size='4'>Gao Yichao</font></td>
+        <td><font size='3'>Yu Zhou</font></td>
+        <td>Michael Sodamin</td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
+        <td>Song Yinglei</td>
+        <td>Liu Hao</td>
         <td>Liu Hongshen</td>
         <td>Liu Lian</td>
+        <td>Liu Zhuo</td>
+    </tr>
+      <tr>
+        <td>Xie Tongtong</td>
+        <td>Yang Xiaohan</td>
         <td></td>
         <td></td>
         <td></td>
@@ -191,6 +201,9 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
     -->
 </table>
 
+### 4. Corresponding Programmer
+
+周立国 <a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a>
 <!--
 ### Former Members
 * Dipl. Cao Wei, *M.Sc.*; Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun; Cui Chuanlu; Li Haichuan
