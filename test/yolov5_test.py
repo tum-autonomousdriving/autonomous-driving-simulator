@@ -158,9 +158,9 @@ def non_max_suppression(
     return output
 
 if __name__ == '__main__':
-    model = YOLOv5Model(model_type='l')
+    model = YOLOv5Model(model_type='x') # n, s, m, l, x: nano, small, middle, large, xlarge
 
-    ckpt = torch.load('weights/yolov5/yolov5l.pt', map_location='cpu')
+    ckpt = torch.load('weights/yolov5/yolov5x.pt', map_location='cpu')
 
     weights = OrderedDict()
 

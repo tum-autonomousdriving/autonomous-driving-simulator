@@ -126,7 +126,7 @@ class Detect(nn.Module):
         return grid, anchor_grid
     
 class YOLOv5Model(nn.Module):
-    def __init__(self, model_type: 'l', *args, **kwargs) -> None:
+    def __init__(self, model_type = 'l', *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         if model_type=='n':

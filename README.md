@@ -95,10 +95,10 @@ In this scene, 3 images are output to your net, and 3 elements of control are ac
 </table>
 
 ### 5. Simulator Scenes Download Link: 
-<!--
-https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
--->
-https://drive.google.com/drive/folders/1YPlSq4V3ArtOUVH11h-doQ2UqCsvQKtQ?usp=sharing
+
+LRZ Sync+Share https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+
+Google Drive https://drive.google.com/drive/folders/1YPlSq4V3ArtOUVH11h-doQ2UqCsvQKtQ?usp=sharing
 
 <!--
 ## Functions
