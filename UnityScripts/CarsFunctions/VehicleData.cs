@@ -17,10 +17,10 @@ public class VehicleData : MonoBehaviour
 
     VehicleController Controller;
     VehicleInputHandler inputHandler;
+    // InputSystemVehicleInputProvider InputProvider;
 
-    public Camera Camera1;
-    public Camera Camera2;
-    public Camera Camera3;
+
+    public Camera[] Cameras;
     private long imgIndex;
 
     void Awake()
@@ -28,18 +28,21 @@ public class VehicleData : MonoBehaviour
         rb = gameObject.GetComponentInParent(typeof(Rigidbody)) as Rigidbody;
         Controller = gameObject.GetComponent<VehicleController>();
         inputHandler = Controller.input;
+        // InputProvider = gameObject.GetComponent<InputSystemVehicleInputProvider>();
         imgIndex = 0;
     }
 
     void Start()
     {
-        InvokeRepeating("WriteData",0.5f,0.1f);
+        InvokeRepeating("WriteData",0.5f,0.067f);
     }
 
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update() { }
+    void Update() {
+        
+     }
 
     // private int ReadIndex(){
     //     int index;													//we will store the index of the file in this variable.
@@ -52,42 +55,28 @@ public class VehicleData : MonoBehaviour
     {
         ImageSaver.SaveTo(
             "Data/Dataset" + Index + "/IMG/sub" + imgIndex,
-            "CapturedImage1.png",
-            Camera1
+            "CapturedImage.png",
+            Cameras
         );
-        ImageSaver.SaveTo(
-            "Data/Dataset" + Index + "/IMG/sub" + imgIndex,
-            "CapturedImage2.png",
-            Camera2
-        );
-        ImageSaver.SaveTo(
-            "Data/Dataset" + Index + "/IMG/sub" + imgIndex,
-            "CapturedImage3.png",
-            Camera3
-        );
-        imgIndex++; //increment image index for next image to be taken.
-
         throttle = inputHandler.states.throttle;
         brakes = inputHandler.states.brakes;
         steering = inputHandler.states.steering;
         TextWriter.WriteToFile(
             "Data/Dataset" + Index,
             "VehicleData.txt",
-            "Data/Dataset"
-                + Index
-                + "/IMG/sub"
+                "/IMG/sub"
                 + imgIndex
-                + "/CapturedImage1.png "
-                + "Data/Dataset"
-                + Index
-                + "/IMG/sub"
-                + imgIndex
-                + "/CapturedImage2.png "
-                + "Data/Dataset"
-                + Index
-                + "/IMG/sub"
-                + imgIndex
-                + "/CapturedImage3.png "
+                + "/CapturedImage.png "
+                // + "Data/Dataset"
+                // + Index
+                // + "/IMG/sub"
+                // + imgIndex
+                // + "/CapturedImage2.png "
+                // + "Data/Dataset"
+                // + Index
+                // + "/IMG/sub"
+                // + imgIndex
+                // + "/CapturedImage3.png "
                 + throttle
                 + " "
                 + brakes
@@ -119,6 +108,8 @@ public class VehicleData : MonoBehaviour
         // + rb.angularVelocity[1]
         // + " "
         // + rb.angularVelocity[2]
+        
         );
+        imgIndex++; //increment image index for next image to be taken.
     }
 }

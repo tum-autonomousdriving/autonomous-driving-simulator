@@ -19,8 +19,8 @@ namespace NWH.VehiclePhysics2.Input
         float _throttle = 0;
         float _brakes = 0;
         float _steering = 0;
-
-        byte[] combinedImage;
+        int _width = 480;
+        int _height = 320;
 
         // *** VEHICLE BINDINGS ***
         public override float Throttle() => _throttle;
@@ -33,19 +33,15 @@ namespace NWH.VehiclePhysics2.Input
 
         void CaptureAndSendImage()
         {
-            int width = Cameras[0].pixelWidth * 3;
-            int height = Cameras[0].pixelHeight * 1;
+            int width = _width * 3;
+            int height = _height * 1;
 
             RenderTexture combinedRenderTexture = new RenderTexture(width, height, 24);
 
             for (int i = 0; i < Cameras.Length; i++)
             {
                 //create a rendertexture so that the image of camera can be rendered into it
-                RenderTexture renderTexture = new RenderTexture(
-                    Cameras[0].pixelWidth,
-                    Cameras[0].pixelHeight,
-                    24
-                );
+                RenderTexture renderTexture = new RenderTexture(_width, _height, 24);
                 //make targetTexture of camera into renderTexture
                 Cameras[i].targetTexture = renderTexture;
                 RenderTexture.active = renderTexture;
@@ -62,8 +58,8 @@ namespace NWH.VehiclePhysics2.Input
                     0,
                     0,
                     0,
-                    Cameras[i].pixelWidth,
-                    Cameras[i].pixelHeight,
+                    _width,
+                    _height,
                     combinedRenderTexture,
                     0,
                     0,
@@ -85,6 +81,7 @@ namespace NWH.VehiclePhysics2.Input
                 TextureFormat.RGB24,
                 OnCompleteReadback
             );
+            Resources.UnloadUnusedAssets();
         }
 
         void OnCompleteReadback(AsyncGPUReadbackRequest request)
@@ -103,8 +100,8 @@ namespace NWH.VehiclePhysics2.Input
             //Retrieve the texture data in byte format stored in byte format from the asynGPUreadback request
             NativeArray<byte> combinedImage_native = request.GetData<byte>();
 
-            int width = Cameras[0].pixelWidth * 3;
-            int height = Cameras[0].pixelHeight * 1;
+            int width = _width * 3;
+            int height = _height * 1;
 
             //create a Texture2D object to apply the image data from the asynGPUreadback request
             Texture2D combinedTexture = new Texture2D(width, height, TextureFormat.RGB24, false);
@@ -112,26 +109,26 @@ namespace NWH.VehiclePhysics2.Input
             combinedTexture.LoadRawTextureData(combinedImage_native);
             combinedTexture.Apply();
 
-            combinedImage = combinedTexture.EncodeToJPG(50);
+            byte[] combinedImage = combinedTexture.EncodeToJPG(50);
             DestroyImmediate(combinedTexture);
 
-            // string base64ImageString = Convert.ToBase64String(combinedImage);
-            // Dictionary<string, string> data = new Dictionary<string, string>();
-            // data["image"] = base64ImageString;
-            // socket_client.Emit("send_image", new JSONObject(data));
+            string base64ImageString = Convert.ToBase64String(combinedImage);
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["image"] = base64ImageString;
+            socket_client.Emit("send_image", new JSONObject(data));
 
-            // Debug.Log("Combined image is captured and sent successfully.");
+            Debug.Log("Combined image is captured and sent successfully.");
         }
 
-        void OnSteer(SocketIOEvent obj)
-        {
-            JSONObject jsonObject = obj.data;
-            //    print(float.Parse(jsonObject.GetField("steering_angle").str));
-            _steering = float.Parse(jsonObject.GetField("steering_angle").str);
-            _throttle = float.Parse(jsonObject.GetField("throttle").str);
-            ServerReply(obj);
-            Debug.Log(_throttle);
-        }
+        // void OnSteer(SocketIOEvent obj)
+        // {
+        //     JSONObject jsonObject = obj.data;
+        //     //    print(float.Parse(jsonObject.GetField("steering_angle").str));
+        //     _steering = float.Parse(jsonObject.GetField("steering_angle").str);
+        //     _throttle = float.Parse(jsonObject.GetField("throttle").str);
+        //     _brakes = float.Parse(jsonobject.GetField("brake").str); //set the _brake to the value of the data.
+        //     ServerReply(obj);
+        // }
 
         void ServerController(SocketIOEvent obj)
         {
@@ -139,6 +136,7 @@ namespace NWH.VehiclePhysics2.Input
             _throttle = float.Parse(_jsonobject.GetField("throttle").str); //set the _throtlage to the value of the data.Throttl field.
             _brakes = float.Parse(_jsonobject.GetField("brake").str); //set the _brake to the value of the data.
             _steering = float.Parse(_jsonobject.GetField("steering_angle").str); //set the _steering to the value of the data.
+            ServerReply(obj);
             Debug.Log("Command recieved.");
         }
 
@@ -148,8 +146,8 @@ namespace NWH.VehiclePhysics2.Input
             data["throttle"] = _throttle.ToString();
             data["brake"] = _brakes.ToString();
             data["steering_angle"] = _steering.ToString();
-            CaptureAndSendImage();
-            data["image"] = Convert.ToBase64String(combinedImage);
+            // CaptureAndSendImage();
+            // data["image"] = Convert.ToBase64String(combinedImage);
             socket_client.Emit("vehicle_data", new JSONObject(data));
         }
 
@@ -170,9 +168,9 @@ namespace NWH.VehiclePhysics2.Input
             socket_client = GameObject.Find("SocketIO").GetComponent<SocketIOComponent>();
             socket_client.On("open", OnOpen);
             socket_client.On("disconnect", OnDisconnect);
-            // socket_client.On("control_command", ServerController);
-            socket_client.On("control_command", OnSteer);
-            // InvokeRepeating("CaptureAndSendImage", 0.0f, 0.1f);
+            socket_client.On("control_command", ServerController);
+            // socket_client.On("control_command", OnSteer);
+            InvokeRepeating("CaptureAndSendImage", 0.0f, 0.05f);
         }
 
         void FixedUpdate() { }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NWH.VehiclePhysics2;
 using NWH.VehiclePhysics2.Effects;
+using NWH.VehiclePhysics2.Input;
 
 public class ResetScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ResetScript : MonoBehaviour
 	Quaternion 	start_rot;
 	VehicleController Controller;
 	DamageHandler damageHandler;
+	InputSystemVehicleInputProvider InputProvider;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +25,7 @@ public class ResetScript : MonoBehaviour
         myRigibody = GetComponent<Rigidbody>();
         start_pos = myTransform.position;
 		start_rot = myTransform.rotation;
+		InputProvider = gameObject.GetComponent<InputSystemVehicleInputProvider>();
         Debug.Log(start_pos);  // prints start position
 	}
 	
@@ -34,6 +38,8 @@ public class ResetScript : MonoBehaviour
 			myTransform.SetLocalPositionAndRotation(start_pos+new Vector3(0,1,0), start_rot);
 			damageHandler.Repair();
 		}
-		
+		if (Input.GetMouseButtonDown(1)) { 	// if the key is pressed, run the method named "Reset"){
+            InputProvider.mouseInput = !InputProvider.mouseInput;
+		}
 	}
 }

@@ -11,8 +11,8 @@ namespace TextFileEditor
     {
         public static Texture2D textureToSave;
         static byte[] bytes;
-        static int width = 640;
-        static int height = 480;
+        static int _width = 360;
+        static int _height = 160;
         static void OnCompleteReadback(AsyncGPUReadbackRequest request)
         {
             if (!request.done)
@@ -30,6 +30,8 @@ namespace TextFileEditor
             NativeArray<byte> combinedImage_native = request.GetData<byte>();
             //Debug.Log("读取到cpu所用时间: " + elapsedTime03.TotalMilliseconds + " ms");
             //create a Texture2D object to apply the image data from the asynGPUreadback request
+            int width = _width * 3;
+            int height = _height * 1;
             Texture2D combinedTexture = new Texture2D(
                 width,
                 height,
@@ -55,12 +57,14 @@ namespace TextFileEditor
             //Debug.Log("Combined image is captured and sent successfully.");
         }
 
-        public static void SaveTo(string dir, string file, Camera targetCamera)
+        public static void SaveTo(string dir, string file, Camera[] Cameras)
         {
             string fullPath = Path.Combine(dir, file);
             //here file name should be "xxx.png"
+            int width = _width * 3;
+            int height = _height * 1;
 
-
+            RenderTexture combinedRenderTexture = new RenderTexture(width, height, 24);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -68,32 +72,52 @@ namespace TextFileEditor
             if (!File.Exists(fullPath))
             {
                 // Create a RenderTexture with the same dimensions as the camera's viewport
-                RenderTexture renderTexture = new RenderTexture(width, height, 24);
+                for (int i = 0; i < Cameras.Length; i++)
+                {
+                    //create a rendertexture so that the image of camera can be rendered into it
+                    RenderTexture renderTexture = new RenderTexture(_width, _height, 24);
+                    //make targetTexture of camera into renderTexture
+                    Cameras[i].targetTexture = renderTexture;
+                    RenderTexture.active = renderTexture;
+                    //trigger the render process
+                    Cameras[i].Render();
 
-                // Set the target texture of the camera to the RenderTexture
-                targetCamera.targetTexture = renderTexture;
+                    int destX = (i % 3) * Cameras[i].pixelWidth;
+                    // int destY = (i / 4) * Cameras[i].pixelHeight;
+                    int destY = 0;
+                    // 使用 Graphics.CopyTexture 将相机纹理的数据复制到目标纹理中的指定区域
+                    Graphics.CopyTexture(
+                        renderTexture,
+                        0,
+                        0,
+                        0,
+                        0,
+                        _width,
+                        _height,
+                        combinedRenderTexture,
+                        0,
+                        0,
+                        destX,
+                        destY
+                    );
 
-                // Activate the RenderTexture
-                targetCamera.Render();
+                    Cameras[i].targetTexture = null;
+                }
+                //create a instance of texture in GPU in order to execute the operation of GPU
+                combinedRenderTexture.Create();
 
-                // Read the pixels from the RenderTexture into the Texture2D
-                RenderTexture.active = renderTexture;
-
-                renderTexture.Create();
-
-                // texture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-                AsyncGPUReadback.Request(renderTexture, 0, TextureFormat.RGB24, OnCompleteReadback);
-
-                // Reset the target texture of the camera
-                targetCamera.targetTexture = null;
-
-                // Release the RenderTexture resources
-                RenderTexture.active = null;
-                Destroy(renderTexture);
+                //read the pixels from GPU by using method AsyncGPUReadback.Request, this step reads the texture as RGB24 Format and stores it in a cache area, while also calling the callback function
+                //initiates an asynGPUreadback request to retrieve the texture data.
+                //可以理解为创建了一个异步读取请求，之后作为传入参数传给回调函数后用request.GetData<byte>()来得到字节串数据
+                AsyncGPUReadback.Request(
+                    combinedRenderTexture,
+                    0,
+                    TextureFormat.RGB24,
+                    OnCompleteReadback
+                );
+                Resources.UnloadUnusedAssets();
 
                 // Convert the texture to a byte array
-                // byte[] bytes = texture.EncodeToPNG();
-
                 // Specify the file path and name
                 // string filePath = Path.Combine(Application.persistentDataPath, "CapturedImage.png");
 

@@ -6,9 +6,10 @@ using TextFileEditor;
 
 public class LaserScan : MonoBehaviour
 {
+    public int ID = 1;
     public GameObject[] Detectors;
 
-    private static int DetectorsCount = 144;
+    private static int DetectorsCount = 60;
 
     //private ArrayList distance = new ArrayList();
     private float[] distance = new float[DetectorsCount]; //array to store distance of all the objects
@@ -29,13 +30,40 @@ public class LaserScan : MonoBehaviour
 
     void Init_Detectors()
     {
-        for (int i = 0; i < DetectorsCount; i++)
+        if (ID == 1)
         {
-            Detectors[i].transform.SetPositionAndRotation(
-                transform.position,
-                Quaternion.Euler(new Vector3(0, 360f / DetectorsCount * i, 0))
-            );
+            for (int i = 0; i < DetectorsCount; i++)
+            {
+                Detectors[i].transform.SetPositionAndRotation(
+                    transform.position,
+                    Quaternion.Euler(new Vector3(0, 60f / DetectorsCount * i, 0))
+                );
+                // Detectors[i].transform.Rotate(Vector3.up, 1f*i, Space.Self);
+            }
         }
+        else if (ID == 2)
+        {
+            for (int i = 0; i < DetectorsCount; i++)
+            {
+                Detectors[i].transform.SetPositionAndRotation(
+                    transform.position,
+                    Quaternion.Euler(new Vector3(0, 60f / DetectorsCount * i - 90f, 0))
+                );
+                // Detectors[i].transform.Rotate(Vector3.up, 1f*i, Space.Self);
+            }
+        }
+        else if (ID == 3)
+        {
+            for (int i = 0; i < DetectorsCount; i++)
+            {
+                Detectors[i].transform.SetPositionAndRotation(
+                    transform.position,
+                    Quaternion.Euler(new Vector3(0, 60f / DetectorsCount * i + 90f, 0))
+                );
+                // Detectors[i].transform.Rotate(Vector3.up, 1f*i, Space.Self);
+            }
+        }
+        transform.Rotate(Vector3.up, -30f, Space.Self);
     }
 
     // Start is called before the first frame update
@@ -88,7 +116,7 @@ public class LaserScan : MonoBehaviour
 
         // Debug.Log(Index);
         string WritePath = "Data/" + "Dataset" + Index;
-        string FileName = "LaserScan.txt";
+        string FileName = "LaserScan" + ID + ".txt";
         TextWriter.WriteToFile(WritePath, FileName, OutputMessage);
 
         // string DibugOutput = "Laserscan ";
