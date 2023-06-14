@@ -98,8 +98,6 @@ In this scene, 3 images are output to your net, and 3 elements of control are ac
 
 LRZ Sync+Share https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
-Google Drive https://drive.google.com/drive/folders/1YPlSq4V3ArtOUVH11h-doQ2UqCsvQKtQ?usp=sharing
-
 <!--
 ## Functions
 * ### High-definition digital twins of real cities and roads
