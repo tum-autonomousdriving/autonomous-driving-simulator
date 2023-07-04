@@ -96,9 +96,13 @@ In this scene, 3 images are output to your net, and 3 elements of control are ac
 
 ### 5. Simulator Scenes Download Link: 
 
-LRZ Sync+Share https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+LRZ Sync+Share:
 
-Experimental V0.23 for windows: https://drive.google.com/file/d/1gVAqzpiHZ_M5mUqed9nTLc_OsjXa0Hjv/view?usp=sharing 
+https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
+
+Experimental V0.23 for windows:
+
+https://drive.google.com/file/d/1gVAqzpiHZ_M5mUqed9nTLc_OsjXa0Hjv/view?usp=sharing 
 
 <!--
 ## Functions
@@ -154,6 +158,22 @@ Integrated Unity industrial-grade lidar simulation for training and testing 3D o
   </tr>
 </table>
 -->
+
+## Useful Vision Algorithms
+
+Pretrained Weights:
+
+https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
+
+### 1. Object Detection
+
+1.1 YOLOv5
+
+1.2 YOLOv8
+
+### 2. Semantic Segmentation
+
+2.1 YOLOv5_sg
 
 ## Developers
 
