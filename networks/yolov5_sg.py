@@ -77,55 +77,28 @@ class SPPF(nn.Module):
             y2 = self.m(y1)
             return self.cv2(torch.cat((x, y1, y2, self.m(y2)), 1))
 
-class Detect(nn.Module):
+class Segment(nn.Module):
     # YOLOv5 Detect head for detection models
     #stride = None  # strides computed during build
     dynamic = False  # force grid reconstruction
     export = False  # export mode
 
-    def __init__(self, nc=80, anchors=(), ch=(), inplace=True, stride=None):  # detection layer
+    def __init__(self, nc=80, ch=(), inplace=True, stride=None):  # detection layer
         super().__init__()
         self.stride = stride
         self.nc = nc  # number of classes
-        self.no = nc + 5  # number of outputs per anchor
-        self.nl = len(anchors)  # number of detection layers
-        self.na = len(anchors[0]) // 2  # number of anchors
-        self.grid = [torch.empty(0) for _ in range(self.nl)]  # init grid
-        self.anchor_grid = [torch.empty(0) for _ in range(self.nl)]  # init anchor grid
-        self.register_buffer('anchors', torch.tensor(anchors).float().view(self.nl, -1, 2))  # shape(nl,na,2)
-        self.m = nn.ModuleList(nn.Conv2d(x, self.no * self.na, 1) for x in ch)  # output conv
+        self.nl = len(ch)  # number of detection layers
+        self.m = nn.ModuleList(nn.Conv2d(x, self.nc, 1) for x in ch)  # output conv
         self.inplace = inplace  # use inplace ops (e.g. slice assignment)
 
     def forward(self, x):
-        z = []  # inference output
         for i in range(self.nl):
             x[i] = self.m[i](x[i])  # conv
-            bs, _, ny, nx = x[i].shape  # x(bs,255,20,20) to x(bs,3,20,20,85)
-            x[i] = x[i].view(bs, self.na, self.no, ny, nx).permute(0, 1, 3, 4, 2).contiguous()
+            x[i] = x[i].permute(0, 2, 3, 1).contiguous()
 
-            if not self.training:  # inference
-                if self.dynamic or self.grid[i].shape[2:4] != x[i].shape[2:4]:
-                    self.grid[i], self.anchor_grid[i] = self._make_grid(nx, ny, i)
-
-                xy, wh, conf = x[i].sigmoid().split((2, 2, self.nc + 1), 4)
-                xy = (xy * 2 + self.grid[i]) * self.stride[i]  # xy
-                wh = (wh * 2) ** 2 * self.anchor_grid[i]  # wh
-                y = torch.cat((xy, wh, conf), 4)
-                z.append(y.view(bs, self.na * nx * ny, self.no))
-
-        return x if self.training else (torch.cat(z, 1),) if self.export else (torch.cat(z, 1), x)
+        return x
     
-    def _make_grid(self, nx=20, ny=20, i=0):
-        d = self.anchors[i].device
-        t = self.anchors[i].dtype
-        shape = 1, self.na, ny, nx, 2  # grid shape
-        y, x = torch.arange(ny, device=d, dtype=t), torch.arange(nx, device=d, dtype=t)
-        yv, xv = torch.meshgrid(y, x)  # torch>=0.7 compatibility
-        grid = torch.stack((xv, yv), 2).expand(shape) - 0.5  # add grid offset, i.e. y = 2.0 * x - 0.5
-        anchor_grid = (self.anchors[i] * self.stride[i]).view((1, self.na, 1, 1, 2)).expand(shape)
-        return grid, anchor_grid
-    
-class YOLOv5Model(nn.Module):
+class YOLOv5SGModel(nn.Module):
     def __init__(self, model_type = 'l', *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
@@ -165,7 +138,8 @@ class YOLOv5Model(nn.Module):
 
         self.sppf = SPPF(c1=ch[4], c2=ch[4], k=5)   # 9
 
-        self.upsample = nn.Upsample(scale_factor=2) # 11 15
+        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear') # 11 15
+        self.upsample_x4 = nn.Upsample(scale_factor=4, mode='bilinear')
         self.concat = Concat()  # 12 16 19 22
 
         self.conv_5 = Conv(c1=ch[4], c2=ch[3], k=1, s=1)    # 10
@@ -174,13 +148,12 @@ class YOLOv5Model(nn.Module):
         self.conv_6 = Conv(c1=ch[3], c2=ch[2], k=1, s=1)    # 14
         self.c3_6 = C3(c1=ch[2]+ch[2], c2=ch[2], n=c3_n[0], shortcut=False)   # 17
 
-        self.conv_7 = Conv(c1=ch[2], c2=ch[2], k=3, s=2)    # 18
-        self.c3_7 = C3(c1=ch[2]+ch[2], c2=ch[3], n=c3_n[0], shortcut=False)   # 20
+        self.conv_7 = Conv(c1=ch[2], c2=ch[1], k=1, s=1)    # 18
+        self.c3_7 = C3(c1=ch[1]+ch[1], c2=ch[1], n=c3_n[0], shortcut=False)   # 20
 
-        self.conv_8 = Conv(c1=ch[3], c2=ch[3], k=3, s=2)    # 21
-        self.c3_8 = C3(c1=ch[3]+ch[3], c2=ch[4], n=c3_n[0], shortcut=False)   # 23
+        self.conv_8 = Conv(c1=ch[1], c2=ch[1], k=1, s=1)    # 21
 
-        self.detect = Detect(nc=80, anchors=[[10,13, 16,30, 33,23], [30,61, 62,45, 59,119], [116,90, 156,198, 373,326]], ch=[ch[2], ch[3], ch[4]], stride=[8, 16, 32])
+        self.detect = Segment(nc=19, ch=[ch[1]], stride=[8, 16, 32])
 
     def forward(self, x):
         # backbone
@@ -188,6 +161,8 @@ class YOLOv5Model(nn.Module):
 
         x = self.conv_1(x)
         x = self.c3_1(x)
+
+        x_2 = x
 
         x = self.conv_2(x)
         x = self.c3_2(x)
@@ -206,31 +181,27 @@ class YOLOv5Model(nn.Module):
 
         # head
         x = self.conv_5(x)
-        x_10 = x
         x = self.upsample(x)
         x = self.concat([x, x_6])
         x = self.c3_5(x)
 
         x = self.conv_6(x)
-        x_14 = x
         x = self.upsample(x)
         x = self.concat([x, x_4])
         x = self.c3_6(x)
 
-        x_17 = x
-
         x = self.conv_7(x)
-        x = self.concat([x, x_14])
+        x = self.upsample(x)
+        x = self.concat([x, x_2])
         x = self.c3_7(x)
 
-        x_20 = x
-
         x = self.conv_8(x)
-        x = self.concat([x, x_10])
-        x = self.c3_8(x)
+        x = self.upsample_x4(x)
         
-        return self.detect([x_17, x_20, x])
+        return self.detect([x])
     
 if __name__=='__main__':
-    model = YOLOv5Model()
+    model = YOLOv5SGModel()
+    x = torch.rand((1,3,640,640))
+    x = model(x)
     print(model)
