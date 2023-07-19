@@ -100,10 +100,6 @@ LRZ Sync+Share:
 
 https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
-Experimental V0.23 for windows:
-
-https://drive.google.com/file/d/1gVAqzpiHZ_M5mUqed9nTLc_OsjXa0Hjv/view?usp=sharing 
-
 <!--
 ## Functions
 * ### High-definition digital twins of real cities and roads
