@@ -96,7 +96,11 @@ In this scene, 3 images are output to your net, and 3 elements of control are ac
 
 ### 5. Simulator Scenes Download Link: 
 
-LRZ Sync+Share:
+Source code:
+
+https://gitlab.lrz.de/tum-autonomousdriving/autonomous-driving
+
+Build:
 
 https://syncandshare.lrz.de/getlink/fiEQ6uWeJQFmosTX7HsxwG/
 
