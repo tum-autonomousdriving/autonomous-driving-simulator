@@ -183,27 +183,32 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 
 ### 2. Supervisor
 
+<table>
+    <tr>
+        <td><a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/">Prof. Dr.-Ing. habil. Alois Christian Knoll</a></td>
+    </tr>
+</table>
+<!--
 **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
+-->
 
 ### 3. Programmers
 
 <table>
     <tr>
         <td>Tang Yuhang</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>Gu Yujie</td>
+        <td>Chen Zehao</td>
+        <td>Feng Tinghan</td>
+        <td>Tang Shaolong</td>
     </tr>
-    <!--
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>Ning Junbing</td>
+        <td>Jasmina Stratorska</td>
+        <td>Maram Bayadsi</td>
         <td></td>
         <td></td>
     </tr>
-    -->
 </table>
 
 ### 4. Former Programmers
@@ -213,22 +218,15 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
         <td>Gao Yichao</td>
         <td>Yu Zhou</td>
         <td>Michael Sodamin</td>
-        <td></td>
-        <td></td>
+        <td>Song Yinglei</td>
+        <td>Liu Hongshen</td>
     </tr>
     <tr>
-        <td>Song Yinglei</td>
-        <td>Liu Hao</td>
-        <td>Liu Hongshen</td>
         <td>Liu Lian</td>
+        <td>Liu Hao</td>
         <td>Liu Zhuo</td>
-    </tr>
-      <tr>
         <td>Xie Tongtong</td>
         <td>Yang Xiaohan</td>
-        <td></td>
-        <td></td>
-        <td></td>
     </tr>
     <!--
     <tr>
@@ -243,7 +241,11 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 
 ### 5. Corresponding Programmer
 
-周立国 <a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a>
+<table>
+    <tr>
+        <td><a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a></td>
+    </tr>
+</table>
 <!--
 ### Former Members
 * Dipl. Cao Wei, *M.Sc.*; Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun; Cui Chuanlu; Li Haichuan
