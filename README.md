@@ -193,7 +193,7 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 <table>
     <tr>
         <td>Tang Yuhang</td>
-        <td>Gu Yujie</td>
+        <td>Guo Yujie</td>
         <td>Chen Zehao</td>
         <td>Feng Tinghan</td>
         <td>Tang Shaolong</td>
