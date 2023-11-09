@@ -183,11 +183,7 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 
 ### 2. Supervisor
 
-<table>
-    <tr>
-        <td><a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/">Prof. Dr.-Ing. habil. Alois Christian Knoll</a></td>
-    </tr>
-</table>
+<a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/">Prof. Dr.-Ing. habil. Alois Christian Knoll</a>
 <!--
 **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
 -->
@@ -241,11 +237,7 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 
 ### 5. Corresponding Programmer
 
-<table>
-    <tr>
-        <td><a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a></td>
-    </tr>
-</table>
+<a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a>
 <!--
 ### Former Members
 * Dipl. Cao Wei, *M.Sc.*; Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun; Cui Chuanlu; Li Haichuan
