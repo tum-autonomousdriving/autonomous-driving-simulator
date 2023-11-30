@@ -220,8 +220,8 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
     <tr>
         <td>Liu Lian</td>
         <td>Liu Hao</td>
-        <td>Liu Zhuo</td>
         <td>Xie Tongtong</td>
+        <td>Liu Zhuo</td>
         <td>Yang Xiaohan</td>
     </tr>
     <!--
