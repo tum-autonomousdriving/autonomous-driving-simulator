@@ -188,7 +188,11 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
 **[Prof. Dr.-Ing. habil. Alois Christian Knoll](https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/)**
 -->
 
-### 3. Programmers
+### 3. Corresponding Programmer
+
+<a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a>
+
+### 4. Programmers
 
 <table>
     <tr>
@@ -207,7 +211,7 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
     </tr>
 </table>
 
-### 4. Former Programmers
+### 5. Former Programmers
 
 <table>
     <tr>
@@ -235,9 +239,6 @@ https://syncandshare.lrz.de/getlink/fi6mGLJoqSu3GEBxW7aWNT/weights
     -->
 </table>
 
-### 5. Corresponding Programmer
-
-<a href="https://www.ce.cit.tum.de/air/people/liguo-zhou/">Zhou Liguo</a>
 <!--
 ### Former Members
 * Dipl. Cao Wei, *M.Sc.*; Zhang Jingyu; Zhang Hanzhen, *M.Sc.*; Meng Jun; Cui Chuanlu; Li Haichuan
